@@ -3,6 +3,7 @@ import api from "../../api/client"
 import { useAuth } from "../../context/auth/AuthContext"
 import { formatCurrency } from "../../utils/formatCurrency/FormatCurrency"
 import CategoryBarChart from "../../components/categoryBarChart/CategoryBarChart"
+import MonthlyTrendChart from "../../components/monthlyTrendChart/MonthlyTrendChart"
 
 const currentDate = new Date()
 
@@ -43,8 +44,10 @@ const Dashboard = () => {
         <StatTile label="Entrate" value={income} color="text-[#008300]" currency={user.currency} />
         <StatTile label="Uscite" value={expense} color="text-[#e34948]" currency={user.currency} />
         <StatTile label="Netto" value={net} color={net >= 0 ? 'text-[#008300]' : 'text-[#e34948]'} currency={user.currency} />
-        <CategoryBarChart year={year} month={month} currency={user.currency} />
+        
       </div>
+      <CategoryBarChart year={year} month={month} currency={user.currency} />
+      <MonthlyTrendChart trend={trend} currency={user.currency} />
     </div>
   )
 }
