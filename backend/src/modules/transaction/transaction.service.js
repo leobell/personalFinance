@@ -19,7 +19,8 @@ const create = async({ amount, description, date, type, categoryId, userId }) =>
             type,
             categoryId,
             userId
-        }
+        },
+        include: { category: true }
     })
 }
 
