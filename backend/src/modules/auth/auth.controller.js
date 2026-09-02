@@ -17,7 +17,7 @@ const register = async(req, res, next) => {
         res.status(201)
             .json({
                 statusCode: 201,
-                message: 'User created succesfully',
+                message: 'User created successfully',
                 result
             })
     } catch (e) {

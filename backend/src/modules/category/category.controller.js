@@ -18,7 +18,7 @@ const create = async(req, res, next) => {
         res.status(201)
             .json({
                 statusCode: 201,
-                message: 'Category created succesfully',
+                message: 'Category created successfully',
                 category
             })
     } catch (e) {
@@ -56,7 +56,7 @@ const update = async(req, res, next) => {
         res.status(200)
             .json({
                 statusCode: 200,
-                message: 'Category updated succesfully',
+                message: 'Category updated successfully',
                 category
             })
     } catch (e) {
@@ -73,7 +73,7 @@ const remove = async(req, res, next) => {
         res.status(200)
             .json({
                 statusCode: 200,
-                message: 'Category deleted succesfully'
+                message: 'Category deleted successfully'
             })
     } catch (e) {
         next(e)

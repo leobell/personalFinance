@@ -4,6 +4,7 @@ import { useAuth } from "../../context/auth/AuthContext"
 import { formatCurrency } from "../../utils/formatCurrency/FormatCurrency"
 import CategoryBarChart from "../../components/categoryBarChart/CategoryBarChart"
 import MonthlyTrendChart from "../../components/monthlyTrendChart/MonthlyTrendChart"
+import toast from 'react-hot-toast'
 
 const currentDate = new Date()
 
@@ -24,9 +25,18 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    api.get('/transactions/summary/monthly-trend', { params: { year } })
-      .then(({ data }) => setTrend(data.trend))
-      .finally(() => setLoading(false))
+    const fetchTrend = async () => {
+      try {
+        const { data } = await api.get('/transactions/summary/monthly-trend', { params: { year } })
+        setTrend(data.trend)
+      } catch (err) {
+        toast.error(err.response?.data?.message || 'Something went wrong')
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchTrend()
   }, [year])
 
   if (loading) {

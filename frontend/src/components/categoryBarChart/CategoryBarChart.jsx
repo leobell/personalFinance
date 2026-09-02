@@ -3,6 +3,7 @@ import { BarChart, Bar, XAxis, YAxis, Cell, ResponsiveContainer, Tooltip } from 
 import api from "../../api/client"
 import { formatCurrency } from "../../utils/formatCurrency/FormatCurrency"
 import { useTheme } from '../../context/theme/ThemeContext'
+import toast from 'react-hot-toast'
 
 const CategoryBarChart = ({ year, month, currency }) => {
     const { theme } = useTheme()
@@ -15,13 +16,20 @@ const CategoryBarChart = ({ year, month, currency }) => {
     const inkColor = theme === 'dark' ? '#ffffff' : '#0b0b0b'
 
     useEffect(() => {
-        setLoading(true)
-        api.get('/transactions/summary/by-category', { params: { year, month } })
-            .then(({ data }) => {
+        const fetchSummary = async () => {
+            setLoading(true)
+            try {
+                const { data } = await api.get('/transactions/summary/by-category', { params: { year, month } })
                 const sorted = [...data.summary].sort((a, b) => Number(b.total) - Number(a.total))
                 setData(sorted)
-            })
-            .finally(() => setLoading(false))
+            } catch (err) {
+                toast.error(err.response?.data?.message || 'Something went wrong')
+            } finally {
+                setLoading(false)
+            }
+        }
+
+        fetchSummary()
     }, [year, month])
 
     if (loading) {

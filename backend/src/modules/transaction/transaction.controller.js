@@ -25,7 +25,7 @@ const create = async(req, res, next) => {
         res.status(201)
             .json({
                 statusCode: 201,
-                message: 'Transaction created succesfully',
+                message: 'Transaction created successfully',
                 transaction
             })
     } catch (e) {
@@ -65,7 +65,7 @@ const update = async(req, res, next) => {
         res.status(200)
             .json({
                 statusCode: 200,
-                message: 'Transaction updated succesfully',
+                message: 'Transaction updated successfully',
                 transaction
             })
     } catch (e) {
@@ -82,7 +82,7 @@ const remove = async(req, res, next) => {
         res.status(200)
             .json({
                 statusCode: 200,
-                message: 'Transaction deleted succesfully'
+                message: 'Transaction deleted successfully'
             })
     } catch (e) {
         next(e)
