@@ -1,4 +1,5 @@
 const authService = require('./auth.service')
+const jwt = require('jsonwebtoken')
 
 const register = async(req, res, next) => {
     try {
@@ -50,7 +51,13 @@ const login = async(req, res, next) => {
     }
 }
 
+const googleCallback = (req, res) => {
+    const token = jwt.sign({ userId: req.user.id }, process.env.JWT_SECRET, { expiresIn: '7d' })
+    res.redirect(`${process.env.FRONTEND_URL}/oauth-callback?token=${token}`) 
+}
+
 module.exports = {
     register,
-    login
+    login,
+    googleCallback
 }

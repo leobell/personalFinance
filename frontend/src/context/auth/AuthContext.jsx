@@ -35,6 +35,18 @@ export const AuthProvider = ({ children }) => {
         setUser(user)
     }
 
+    const loginWithToken = async(token) => {
+        localStorage.setItem('flowly_token', token)
+        const { data } = await api.get('/users/me')
+        localStorage.setItem('flowly_user', JSON.stringify(data.user))
+        setUser(data.user)
+    }
+
+    const updateUser = (updatedUser) => {
+        localStorage.setItem('flowly_user', JSON.stringify(updatedUser))
+        setUser(updatedUser)
+    }
+
     const logout = () => {
         localStorage.removeItem('flowly_token')
         localStorage.removeItem('flowly_user')
@@ -42,7 +54,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     return (
-        <AuthContext.Provider value={{ user, loading, login, register, logout }}>
+        <AuthContext.Provider value={{ user, loading, login, register, logout, loginWithToken, updateUser }}>
             {children}
         </AuthContext.Provider>
     )

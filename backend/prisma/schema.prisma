@@ -19,14 +19,18 @@ enum TransactionType {
 }
 
 model User {
-  id            Int       @id @default(autoincrement())
-  email         String    @unique
-  passwordHash  String
+  id            Int               @id @default(autoincrement())
+  email         String            @unique
+  passwordHash  String?
+  provider      String            @default("local")
+  providerId    String?
   name          String
-  currency      String    @default("EUR")
-  createdAt     DateTime  @default(now())
+  currency      String            @default("EUR")
+  createdAt     DateTime          @default(now())
   categories    Category[]
   transactions  Transaction[]
+
+  @@unique([provider, providerId])
 }
 
 model Category{

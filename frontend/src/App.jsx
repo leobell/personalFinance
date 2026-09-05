@@ -9,6 +9,8 @@ import Dashboard from './pages/dashboard/Dashboard'
 import Transactions from './pages/transactions/Transactions'
 import Categories from './pages/categories/Categories'
 import Home from './pages/home/Home'
+import OAuth from './pages/oAuth/OAuth'
+import Settings from './pages/settings/Settings'
 
 const App = () => {
   return (
@@ -19,6 +21,7 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/oauth-callback" element={<OAuth />} />
             <Route path="/dashboard" element={
               <ProtectedRoute>
                 <Dashboard />
@@ -32,6 +35,11 @@ const App = () => {
             <Route path="/categories" element={
               <ProtectedRoute>
                 <Categories />
+              </ProtectedRoute>
+            } />
+            <Route path='/settings' element={
+              <ProtectedRoute>
+                <Settings />
               </ProtectedRoute>
             } />
           </Routes>

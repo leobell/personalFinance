@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import { useAuth } from '../../context/auth/AuthContext'
 import Logo from '../logo/Logo'
 import ThemeToggle from '../themeToggle/ThemeToggle'
@@ -57,6 +57,20 @@ const Layout = ({ children }) => {
                     </nav>
 
                     <div className="flex items-center gap-4">
+                        <Link
+                            to="/settings"
+                            aria-label="Impostazioni"
+                            className="text-slate-500 transition hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
+                        >
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
+                                <line x1="4" y1="6" x2="20" y2="6" />
+                                <circle cx="9" cy="6" r="2" fill="currentColor" stroke="none" />
+                                <line x1="4" y1="12" x2="20" y2="12" />
+                                <circle cx="15" cy="12" r="2" fill="currentColor" stroke="none" />
+                                <line x1="4" y1="18" x2="20" y2="18" />
+                                <circle cx="7" cy="18" r="2" fill="currentColor" stroke="none" />
+                            </svg>
+                        </Link>
                         <ThemeToggle />
                         <span className="hidden text-sm text-slate-500 dark:text-slate-400 sm:inline">{user?.name}</span>
                         <button

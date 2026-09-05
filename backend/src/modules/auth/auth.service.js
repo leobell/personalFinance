@@ -21,14 +21,14 @@ const register = async({ email, password, name, currency }) => {
 
     return {
         token,
-        user: { id:user.id, email:user.email, name: user.name, currency: user.currency },
+        user: { id:user.id, email:user.email, name: user.name, currency: user.currency, provider: user.provider },
     }
 }
 
 const login = async({ email, password }) => {
     const user = await prisma.user.findUnique({ where: { email } })
 
-    if(!user){
+    if(!user || !user.passwordHash){
         throw new InvalidCredentialsException()
     }
 
@@ -42,11 +42,30 @@ const login = async({ email, password }) => {
 
     return{
         token,
-        user: { id: user.id, email: user.email, name: user.name, currency: user.currency }
+        user: { id: user.id, email: user.email, name: user.name, currency: user.currency, provider: user.provider }
     }
+}
+
+const findOrCreateGoogleUser = async({ googleId, email, name }) => {
+    const existing = await prisma.user.findUnique({ where: { email } })
+
+    if (existing) {
+        if (existing.provider !== 'google') {
+            throw new EmailAlreadyInUseException(
+                'This email is already registered with a password. Please log in with your password instead.'
+            )
+        }
+
+        return existing
+    }
+
+    return prisma.user.create({
+        data: { email, name, provider: 'google', providerId: googleId }
+    })
 }
 
 module.exports = { 
     register,
-    login
+    login,
+    findOrCreateGoogleUser
 }
