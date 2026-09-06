@@ -5,6 +5,15 @@ import CategoryCard from "../../components/categoryCard/CategoryCard"
 
 const categoryPalette = ['#2a78d6', '#eb6834', '#1baf7a', '#eda100', '#e87ba4', '#008300', '#4a3aa7', '#e34948']
 
+const getSuggestedColor = (categories) => {
+    const usageCount = categoryPalette.map((color) =>
+        categories.filter((category) => category.color === color).length
+    )
+    const minUsage = Math.min(...usageCount)
+    const index = usageCount.indexOf(minUsage)
+    return categoryPalette[index]
+}
+
 const Categories = () => {
   const [categories, setCategories] = useState([])
   const [loading, setLoading] = useState(true)
@@ -24,7 +33,7 @@ const Categories = () => {
         setCategories(data.categories)
         setFormData((prev) => ({
           ...prev,
-          color: categoryPalette[data.categories.length % categoryPalette.length]
+          color: getSuggestedColor(data.categories)
         }))
       } catch (err) {
         toast.error(err.response?.data?.message || 'Something went wrong')
@@ -59,7 +68,7 @@ const Categories = () => {
 
   const handleCancelEdit = () => {
     setEditingId(null)
-    setFormData({ name: '', type: 'EXPENSE', color: categoryPalette[categories.length % categoryPalette.length] })
+    setFormData({ name: '', type: 'EXPENSE', color: getSuggestedColor(categories) })
   }
 
 
@@ -77,7 +86,7 @@ const Categories = () => {
         const { data } = await api.post('/categories', formData)
         const updated = [...categories, data.category]
         setCategories(updated)
-        setFormData({ name:'', type: 'EXPENSE', color: categoryPalette[updated.length % categoryPalette.length] })
+        setFormData({ name:'', type: 'EXPENSE', color: getSuggestedColor(updated) })
         toast.success(data.message)
       }
       
@@ -162,7 +171,7 @@ const Categories = () => {
               onClick={handleCancelEdit}
               className="text-sm text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
             >
-              Annulla modifiche
+              Annulla modifica
             </button>
           )}
         </div>

@@ -9,7 +9,8 @@ const register = async(req, res, next) => {
             return res.status(400)
                 .json({
                     statusCode: 400,
-                    error: 'Email, password and name are required'
+                    error: 'Bad Request',
+                    message: 'email, password and name are required'
                 })
         }
 
@@ -34,7 +35,7 @@ const login = async(req, res, next) => {
             return res.status(400)
                 .json({
                     statusCode: 400,
-                    error: 'Bad request',
+                    error: 'Bad Request',
                     message: 'email and password are required'
                 })
         }

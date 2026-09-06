@@ -8,7 +8,7 @@ const create = async(req, res, next) => {
             return res.status(400)
                 .json({
                     statusCode: 400,
-                    error: 'Bad request',
+                    error: 'Bad Request',
                     message: 'amount, date, type and categoryId are required'
                 })
         }

@@ -50,6 +50,8 @@ const Dashboard = () => {
 
   return (
     <div className="space-y-8">
+      <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Dashboard</h1>
+
       <div className="grid gap-4 sm:grid-cols-3">
         <StatTile label="Entrate" value={income} color="text-[#008300]" currency={user.currency} />
         <StatTile label="Uscite" value={expense} color="text-[#e34948]" currency={user.currency} />

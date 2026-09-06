@@ -36,7 +36,7 @@ const updatePassword = async(req, res, next) => {
             return res.status(400)
                 .json({
                     statusCode: 400,
-                    error: 'Bad request',
+                    error: 'Bad Request',
                     message: 'currentPassword and newPassword are required'
                 })
         }
