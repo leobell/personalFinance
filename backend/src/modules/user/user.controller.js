@@ -41,6 +41,15 @@ const updatePassword = async(req, res, next) => {
                 })
         }
 
+        if (newPassword.length < 8) {
+            return res.status(400)
+                .json({
+                    statusCode: 400,
+                    error: 'Bad Request',
+                    message: 'newPassword must be at least 8 characters long'
+                })
+        }
+
         await userService.updatePassword(req.userId, { currentPassword, newPassword })
         res.status(200)
             .json({

@@ -13,6 +13,15 @@ const create = async(req, res, next) => {
                 })
         }
 
+        if (Number(amount) <= 0) {
+            return res.status(400)
+                .json({
+                    statusCode: 400,
+                    error: 'Bad Request',
+                    message: 'amount must be greater than 0'
+                })
+        }
+
         const transaction = await transactionService.create({
             amount,
             description,
@@ -51,6 +60,15 @@ const update = async(req, res, next) => {
     try {
         const { id } = req.params
         const { amount, description, date, type, categoryId } = req.body
+
+        if (amount !== undefined && Number(amount) <= 0) {
+            return res.status(400)
+                .json({
+                    statusCode: 400,
+                    error: 'Bad Request',
+                    message: 'amount must be greater than 0'
+                })
+        }
 
         const transaction = await transactionService.update({
             id: Number(id),

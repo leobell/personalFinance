@@ -14,6 +14,15 @@ const register = async(req, res, next) => {
                 })
         }
 
+        if (password.length < 8) {
+            return res.status(400)
+                .json({
+                    statusCode: 400,
+                    error: 'Bad Request',
+                    message: 'password must be at least 8 characters long'
+                })
+        }
+
         const result = await authService.register({ email, password, name, currency })
         
         res.status(201)

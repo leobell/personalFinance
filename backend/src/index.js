@@ -15,7 +15,11 @@ const categoryRoute = require('./modules/category/category.routes')
 const transactionRoute = require('./modules/transaction/transaction.routes')
 const userRoute = require('./modules/user/user.routes')
 
-app.use(cors())
+const corsOptions = {
+    origin: process.env.FRONTEND_URL
+}
+
+app.use(cors(corsOptions))
 app.use(express.json())
 app.use(passport.initialize())
 app.use('/api', apiLimiter)
