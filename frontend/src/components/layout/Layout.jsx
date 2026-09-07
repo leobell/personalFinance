@@ -46,7 +46,7 @@ const Layout = ({ children }) => {
                                 className={({ isActive }) =>
                                     `text-sm font-medium transition ${
                                         isActive
-                                            ? 'text-[#2a78d6] dark:text-[#3987e5]'
+                                            ? 'text-[#1c5cab] dark:text-[#3987e5]'
                                             : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
                                     }`
                                 }
@@ -99,7 +99,7 @@ const Layout = ({ children }) => {
                                 className={({ isActive }) =>
                                     `flex flex-col items-center gap-1 px-4 py-1 text-xs font-medium transition ${
                                         isActive
-                                            ? 'text-[#2a78d6] dark:text-[#3987e5]'
+                                            ? 'text-[#1c5cab] dark:text-[#3987e5]'
                                             : 'text-slate-500 dark:text-slate-400'
                                     }`
                                 }

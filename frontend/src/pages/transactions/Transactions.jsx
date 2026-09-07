@@ -2,8 +2,8 @@ import { useEffect, useState, useRef } from "react"
 import toast from "react-hot-toast"
 import api from "../../api/client"
 import { useAuth } from "../../context/auth/AuthContext"
-import { formatCurrency } from "../../utils/formatCurrency/FormatCurrency"
 import TransactionRow from "../../components/transactionRow/TransactionRow"
+import { Helmet } from 'react-helmet-async'
 
 const Transactions = () => {
   const { user } = useAuth()
@@ -116,6 +116,9 @@ const Transactions = () => {
 
   return (
     <div className="space-y-6">
+      <Helmet>
+        <title>Transazioni - Flowly</title>
+      </Helmet>
       <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Transazioni</h1>
 
       <form ref={formRef} onSubmit={handleSubmit} className="max-w-md space-y-4 rounded-2xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900">

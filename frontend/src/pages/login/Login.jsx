@@ -5,6 +5,8 @@ import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "../../context/auth/AuthContext"
 import AuthVisual from "../../components/authVisual/AuthVisual"
+import { Helmet } from 'react-helmet-async'
+
 
 const Login = () => {
     const { login } = useAuth()
@@ -29,7 +31,11 @@ const Login = () => {
     
     return (
         <div className="flex min-h-screen items-center justify-center bg-[#f9f9f7] p-6 dark:bg-[#0d0d0d]">
-            <div className="relative flex w-full max-w-5xl overflow-hidden rounded-2xl bg-white shadow-xl dark:bg-slate-900 lg:min-h-[600px]">
+            <Helmet>
+                <title>Accedi - Flowly</title>
+                <meta name="description" content="Accedi a Flowly per continuare a tracciare le tue finanze." />
+            </Helmet>
+            <div className="relative flex w-full max-w-5xl overflow-hidden rounded-2xl bg-white shadow-xl dark:bg-slate-900 lg:min-h-150">
                 <AuthVisual
                     title="Bentornato"
                     subtitle="Accedi per continuare a tracciare dove vanno i tuoi soldi, mese dopo mese."
@@ -111,7 +117,7 @@ const Login = () => {
 
                         <p className="text-center text-sm text-slate-500 dark:text-slate-400">
                             Non hai un account?{' '}
-                            <Link to="/register" className="font-medium text-[#2a78d6] dark:text-[#3987e5]">
+                            <Link to="/register" className="font-medium text-[#1c5cab] dark:text-[#3987e5]">
                                 Registrati
                             </Link>
                         </p>

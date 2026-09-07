@@ -5,6 +5,7 @@ import { formatCurrency } from "../../utils/formatCurrency/FormatCurrency"
 import CategoryBarChart from "../../components/categoryBarChart/CategoryBarChart"
 import MonthlyTrendChart from "../../components/monthlyTrendChart/MonthlyTrendChart"
 import toast from 'react-hot-toast'
+import { Helmet } from 'react-helmet-async'
 
 const currentDate = new Date()
 
@@ -50,6 +51,10 @@ const Dashboard = () => {
 
   return (
     <div className="space-y-8">
+      <Helmet>
+        <title>Dashboard - Flowly</title>
+      </Helmet>
+      
       <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Dashboard</h1>
 
       <div className="grid gap-4 sm:grid-cols-3">

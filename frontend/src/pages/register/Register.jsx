@@ -5,6 +5,7 @@ import { useAuth } from "../../context/auth/AuthContext"
 import Logo from "../../components/logo/Logo"
 import ThemeToggle from "../../components/themeToggle/ThemeToggle"
 import AuthVisual from "../../components/authVisual/AuthVisual"
+import { Helmet } from 'react-helmet-async'
 
 const Register = () => {
   const { register } = useAuth()
@@ -42,6 +43,10 @@ const Register = () => {
   }
   return (
     <div className="flex min-h-screen items-center justify-center bg-[#f9f9f7] p-6 dark:bg-[#0d0d0d]">
+      <Helmet>
+        <title>Registrati - Flowly</title>
+        <meta name="description" content="Crea un account gratuito su Flowly e inizia a tracciare dove vanno i tuoi soldi ogni mese." />
+      </Helmet>
       <div className="relative flex w-full max-w-5xl overflow-hidden rounded-2xl bg-white shadow-xl dark:bg-slate-900 lg:min-h-150">
         <AuthVisual
           title="Inizia a tracciare le tue finanze"
@@ -141,7 +146,7 @@ const Register = () => {
 
             <p className="text-center text-sm text-slate-500 dark:text-slate-400">
               Hai già un account?{' '}
-              <Link to="/login" className="font-medium text-[#2a78d6] dark:text-[#3987e5]">
+              <Link to="/login" className="font-medium text-[#1c5cab] dark:text-[#3987e5]">
                 Accedi
               </Link>
             </p>

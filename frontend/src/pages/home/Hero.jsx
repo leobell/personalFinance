@@ -123,7 +123,7 @@ const Hero = () => {
                 </motion.div>
 
                 <motion.h1 variants={item} className="text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
-                    Track every euro. See where it goes.
+                    Track every expense. See where it goes.
                 </motion.h1>
 
                 <motion.p variants={item} className="max-w-xl text-lg text-slate-600 dark:text-slate-400">

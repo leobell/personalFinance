@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard
+Disallow: /transactions
+Disallow: /categories
+Disallow: /settings
+Disallow: /oauth-callback

@@ -128,6 +128,10 @@ const Features = () => {
             viewport={{ once: true, amount: 0.3 }}
             className="mx-auto max-w-5xl px-6 py-24"
         >
+            <h2 className="mb-10 text-center text-2xl font-bold text-slate-700 dark:text-white sm:text-3xl">
+                Cosa puoi fare con Flowly
+            </h2>
+
             <div className="grid gap-8 sm:grid-cols-3">
                 {features.map((feature) => {
                     const Visual = visualComponents[feature.visual]

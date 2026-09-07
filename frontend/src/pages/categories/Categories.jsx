@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react"
 import api from "../../api/client"
 import toast from 'react-hot-toast'
 import CategoryCard from "../../components/categoryCard/CategoryCard"
+import { Helmet } from 'react-helmet-async'
 
 const categoryPalette = ['#2a78d6', '#eb6834', '#1baf7a', '#eda100', '#e87ba4', '#008300', '#4a3aa7', '#e34948']
 
@@ -106,6 +107,10 @@ const Categories = () => {
 
   return (
     <div className="space-y-6">
+      <Helmet>
+        <title>Categorie - Flowly</title>
+      </Helmet>
+      
       <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Categorie</h1>
 
       <form ref={formRef} onSubmit={handleSubmit} className="max-w-md space-y-4 rounded-2xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900">

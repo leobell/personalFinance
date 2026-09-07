@@ -9,7 +9,7 @@ const CategoryCard = ({ category, onEdit, onDelete }) => (
             <button
                 onClick={() => onEdit(category)}
                 aria-label={`Modifica ${category.name}`}
-                className="text-slate-400 transition hover:text-[#2a78d6] dark:text-slate-500"
+                className="text-slate-400 transition hover:text-[#1c5cab] dark:text-slate-500"
             >
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
                     <path d="M12 20h9" />
