@@ -2,6 +2,8 @@ import { NavLink, Link } from 'react-router-dom'
 import { useAuth } from '../../context/auth/AuthContext'
 import Logo from '../logo/Logo'
 import ThemeToggle from '../themeToggle/ThemeToggle'
+import toast from 'react-hot-toast'
+import api from '../../api/client'
 
 const HomeIcon = (props) => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -31,6 +33,15 @@ const navItems = [
 
 const Layout = ({ children }) => {
     const { user, logout } = useAuth()
+
+    const handleResendVerification = async () => {
+        try {
+            const { data } = await api.post('/auth/resend-verification', { email: user.email })
+            toast.success(data.message)
+        } catch (err) {
+            toast.error(err.response?.data?.message || 'Something went wrong')
+        }
+    }
 
     return (
         <div className="min-h-screen bg-[#f9f9f7] dark:bg-[#0d0d0d]">
@@ -82,6 +93,15 @@ const Layout = ({ children }) => {
                     </div>
                 </div>
             </header>
+
+            {user && !user.emailVerified && (
+                <div className="bg-amber-50 px-6 py-3 text-center text-sm text-amber-800 dark:bg-amber-900/20 dark:text-amber-400">
+                    La tua email non è ancora verificata.{' '}
+                    <button onClick={handleResendVerification} className="font-medium underline hover:no-underline">
+                        Rimanda l'email di verifica
+                    </button>
+                </div>
+            )}
 
             <main className="mx-auto max-w-6xl px-6 py-8 pb-24 md:pb-8">
                 {children}

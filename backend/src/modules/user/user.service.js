@@ -12,7 +12,8 @@ const getMe = async(userId) => {
         email: user.email,
         name: user.name,
         currency: user.currency,
-        provider: user.provider
+        provider: user.provider,
+        emailVerified: user.emailVerified
     }
 }
 
@@ -27,7 +28,8 @@ const updateProfile = async(userId, { name, currency }) => {
         email: user.email,
         name: user.name,
         currency: user.currency,
-        provider: user.provider
+        provider: user.provider,
+        emailVerified: user.emailVerified
     }
 }
 

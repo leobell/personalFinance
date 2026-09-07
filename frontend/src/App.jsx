@@ -15,6 +15,9 @@ import Settings from './pages/settings/Settings'
 import NotFound from './pages/notFound/NotFound'
 import Privacy from './pages/privacy/Privacy'
 import Terms from './pages/terms/Terms'
+import ForgotPassword from './pages/forgotPassword/ForgotPassword'
+import ResetPassword from './pages/resetPassword/ResetPassword'
+import VerifyEmail from './pages/verifyEmail/VerifyEmail'
 
 const App = () => {
   return (
@@ -29,6 +32,9 @@ const App = () => {
               <Route path="/oauth-callback" element={<OAuth />} />
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/terms" element={<Terms />} />
+              <Route path="/forgot-password" element={<ForgotPassword />} />
+              <Route path="/reset-password" element={<ResetPassword />} />
+              <Route path="/verify-email" element={<VerifyEmail />} />
               <Route path="/dashboard" element={
                 <ProtectedRoute>
                   <Dashboard />

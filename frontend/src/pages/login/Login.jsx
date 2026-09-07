@@ -105,6 +105,12 @@ const Login = () => {
                                     className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 outline-none focus:border-[#2a78d6] focus:ring-2 focus:ring-[#2a78d6]/20 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
                                 />
                             </div>
+                            <div className="text-right">
+                                <Link to="/forgot-password" className="text-sm font-medium text-[#1c5cab] dark:text-[#3987e5]">
+                                    Password dimenticata?
+                                </Link>
+                            </div>
+
 
                             <button
                                 type="submit"
