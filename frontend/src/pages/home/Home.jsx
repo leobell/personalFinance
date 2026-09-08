@@ -12,12 +12,12 @@ const Home = () => {
                 <meta property="og:title" content="Flowly - Traccia le tue finanze" />
                 <meta property="og:description" content="Flowly ti aiuta a tracciare le tue spese, organizzarle in categorie e visualizzare con grafici puliti dove vanno i tuoi soldi ogni mese." />
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://flowly-jade.vercel.app/" />
+                <meta property="og:url" content="https://flowlyfinance.app/" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Flowly - Traccia le tue finanze" />
                 <meta name="twitter:description" content="Flowly ti aiuta a tracciare le tue spese, organizzarle in categorie e visualizzare con grafici puliti dove vanno i tuoi soldi ogni mese." />
-                <meta property="og:image" content="https://flowly-jade.vercel.app/og-flowly.png" />
-                <meta name="twitter:image" content="https://flowly-jade.vercel.app/og-flowly.png" />
+                <meta property="og:image" content="https://flowlyfinance.app/og-flowly.png" />
+                <meta name="twitter:image" content="https://flowlyfinance.app/og-flowly.png" />
             </Helmet>
             <Hero />
             <Features />
