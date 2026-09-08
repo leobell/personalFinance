@@ -8,6 +8,7 @@ const EmailAlreadyInUseException = require('../../exceptions/auth/EmailAlreadyIn
 const InvalidCredentialsException = require('../../exceptions/auth/InvalidCredentialsException')
 const InvalidVerificationTokenException = require('../../exceptions/auth/InvalidVerificationTokenException')
 const SALT_ROUNDS = 10
+const categoryService = require('../category/category.service')
 
 const register = async({ email, password, name, currency }) => {
     const existing = await prisma.user.findUnique({ where: { email } })
@@ -20,6 +21,8 @@ const register = async({ email, password, name, currency }) => {
     const user = await prisma.user.create({
         data: { email, passwordHash, name, currency }
     })
+    
+    await categoryService.createDefaultCategories(user.id)
 
     await sendVerificationEmail(user)
 
@@ -66,9 +69,13 @@ const findOrCreateGoogleUser = async({ googleId, email, name }) => {
         return existing
     }
 
-    return prisma.user.create({
+    const user = await prisma.user.create({
         data: { email, name, provider: 'google', providerId: googleId, emailVerified: true }
     })
+
+    await categoryService.createDefaultCategories(user.id)
+
+    return user
 }
 
 const forgotPassword = async(email) => {
