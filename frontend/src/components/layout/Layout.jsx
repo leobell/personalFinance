@@ -4,6 +4,7 @@ import Logo from '../logo/Logo'
 import ThemeToggle from '../themeToggle/ThemeToggle'
 import toast from 'react-hot-toast'
 import api from '../../api/client'
+import Avatar from '../avatar/Avatar'
 
 const HomeIcon = (props) => (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -83,7 +84,7 @@ const Layout = ({ children }) => {
                             </svg>
                         </Link>
                         <ThemeToggle />
-                        <span className="hidden text-sm text-slate-500 dark:text-slate-400 sm:inline">{user?.name}</span>
+                        <Avatar name={user?.name} />
                         <button
                             onClick={logout}
                             className="text-sm font-medium text-slate-500 transition hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
