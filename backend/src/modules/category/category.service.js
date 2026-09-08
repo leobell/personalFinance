@@ -45,14 +45,14 @@ const update = async({ id, userId, name, color, type }) => {
 const remove = async({ id, userId }) => {
     try {
         const result = await prisma.category.deleteMany({
-            where: { id, userId}
+            where: { id, userId }
         })
 
-        if(result.count === 0){
+        if (result.count === 0) {
             throw new CategoryNotFoundException()
         }
     } catch (e) {
-        if (e.code === 'P2003') {
+        if (e.code === 'P2003' || (e.message && e.message.includes('foreign key constraint'))) {
             throw new CategoryInUseException()
         }
         throw e
