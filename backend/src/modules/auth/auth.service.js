@@ -90,7 +90,7 @@ const forgotPassword = async(email) => {
     const resetUrl = `${process.env.FRONTEND_URL}/reset-password?token=${token}`
 
     const { error } = await resend.emails.send({
-        from: 'onboarding@resend.dev',
+        from: 'noreply@flowlyfinance.app',
         to: email,
         subject: 'Reimposta la tua password - Flowly',
         html: `<p>Hai richiesto di reimpostare la password del tuo account Flowly.</p><p><a href="${resetUrl}">Clicca qui per reimpostarla</a></p><p>Il link scade tra un'ora. Se non hai richiesto tu questo cambio, ignora questa email.</p>`
@@ -141,7 +141,7 @@ const sendVerificationEmail = async (user) => {
     const verifyUrl = `${process.env.FRONTEND_URL}/verify-email?token=${token}`
 
     const { error } = await resend.emails.send({
-        from: 'onboarding@resend.dev',
+        from: 'noreply@flowlyfinance.app',
         to: user.email,
         subject: 'Conferma la tua email - Flowly',
         html: `<p>Ciao ${user.name}, conferma la tua email per completare la registrazione su Flowly.</p><p><a href="${verifyUrl}">Clicca qui per confermare</a></p><p>Il link scade tra 24 ore.</p>`
